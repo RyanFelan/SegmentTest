@@ -12,6 +12,15 @@
 </head>
   <body>
     <pre>Segment Tester!</pre>
-    <button>Buy Now</button>
+    <button onclick="myFunction()">Buy Now</button>
+
+    <script>
+        function myFunction() {
+            analytics.track("segment_test", {
+                revenue: 0, // Optional in cents as integer (500 == $5.00)
+                value: 0.00 // Optional as float
+            });
+        }
+    </script>
   </body>
 </html>
