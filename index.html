@@ -15,12 +15,24 @@
     <button onclick="myFunction()">Segment Track Call</button>
 
     <script>
-      function myFunction() {
-        analytics.track("segment_test", {
-            revenue: 5000, // Optional in cents as integer (500 == $5.00)
-            value: 1.00 // Optional as float
+        function myFunction() {
+            analytics.track("segment_test", {
+                revenue: 5000, // Optional in cents as integer (500 == $5.00)
+                value: 1.00 // Optional as float
+            });
+            window.optimizelyEdge.push(addListener);
+        }
+
+        window.optimizelyEdge.push({
+            "type": "addListener",
+            "filter": {
+                "type": "lifecycle",
+                "name": "initialized"
+            },
+            "handler": function(event) {
+                console.log("Project " + window["optimizely"].get("data").projectId + " is initialized");
+            }
         });
-      }
     </script>
   </body>
 </html>
