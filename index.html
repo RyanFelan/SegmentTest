@@ -74,6 +74,21 @@
         "isOptOut": false
       });
     }
+
+    if (localStorage.getItem('holdEvents') === 'true'){
+      console.log('User is holding events.');
+      window["optimizely"] = window["optimizely"] || [];
+      window["optimizely"].push({
+        "type": "holdEvents"
+      });
+    }
+    else{
+      console.log('User is not holding events.');
+      window["optimizely"] = window["optimizely"] || [];
+      window["optimizely"].push({
+        "type": "sendEvents"
+      });
+    }
   </script>
   <!--Optimizely OptOut-->
   <!--Optimizely-->
