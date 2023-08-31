@@ -62,22 +62,37 @@
       document.cookie = name + '=; path=/;';
     }
 
+    function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Check if this is the cookie you want based on its name
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    // If the cookie is not found, return null or an appropriate value
+    return null;
+}
+
+
     if (localStorage.getItem('optedOut') === 'true'){
       console.log('User has opted out.');
       window["optimizely"] = window["optimizely"] || [];
       window["optimizely"].push({
-      "type": "optOut",
-      "isOptOut": true
+        "type": "optOut",
+        "isOptOut": true
       })
-      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$event_queue');
-      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$events');
-      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$layer_states');
-      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$session_state');
-      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$variation_map');
-      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$visitor_profile');
-      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$layer_map');
-      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$tracker_optimizely');
-      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$pending_events');
+      const optimizelyEndUserId = getCookie('optimizelyEndUserId');
+      localStorage.removeItem('optimizelyData$${optimizelyEndUserId}$$23318520138$$event_queue');
+      localStorage.removeItem('optimizelyData$${optimizelyEndUserId}$$23318520138$$events');
+      localStorage.removeItem('optimizelyData$${optimizelyEndUserId}$$23318520138$$layer_states');
+      localStorage.removeItem('optimizelyData$${optimizelyEndUserId}$$23318520138$$session_state');
+      localStorage.removeItem('optimizelyData$${optimizelyEndUserId}$$23318520138$$variation_map');
+      localStorage.removeItem('optimizelyData$${optimizelyEndUserId}$$23318520138$$visitor_profile');
+      localStorage.removeItem('optimizelyData$${optimizelyEndUserId}$$23318520138$$layer_map');
+      localStorage.removeItem('optimizelyData$${optimizelyEndUserId}$$23318520138$$tracker_optimizely');
+      localStorage.removeItem('optimizelyData$${optimizelyEndUserId}$$23318520138$$pending_events');
       deleteCookie('optimizelyEndUserId');
     }
     else{
