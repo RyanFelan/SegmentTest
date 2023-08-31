@@ -68,7 +68,9 @@
         const cookie = cookies[i].trim();
         // Check if this is the cookie you want based on its name
         if (cookie.startsWith(name + '=')) {
-            return cookie.substring(name.length + 1);
+            value = cookie.substring(name.length + 1);
+            value = cookie.split('=');
+            return value[1];
         }
     }
     // If the cookie is not found, return null or an appropriate value
@@ -84,15 +86,16 @@
         "isOptOut": true
       })
       const optimizelyEndUserId = getCookie('optimizelyEndUserId');
-      localStorage.removeItem('optimizely_data$${optimizelyEndUserId}$$23318520138$$event_queue');
-      localStorage.removeItem('optimizely_data$${optimizelyEndUserId}$$23318520138$$events');
-      localStorage.removeItem('optimizely_data$${optimizelyEndUserId}$$23318520138$$layer_states');
-      localStorage.removeItem('optimizely_data$${optimizelyEndUserId}$$23318520138$$session_state');
-      localStorage.removeItem('optimizely_data$${optimizelyEndUserId}$$23318520138$$variation_map');
-      localStorage.removeItem('optimizely_data$${optimizelyEndUserId}$$23318520138$$visitor_profile');
-      localStorage.removeItem('optimizely_data$${optimizelyEndUserId}$$23318520138$$layer_map');
-      localStorage.removeItem('optimizely_data$${optimizelyEndUserId}$$23318520138$$tracker_optimizely');
-      localStorage.removeItem('optimizely_data$${optimizelyEndUserId}$$23318520138$$pending_events');
+      const optiStr = 'optimizely_data$$' + optimizelyEndUserId + '$$23318520138$$';
+      localStorage.removeItem(optiStr + 'event_queue');
+      localStorage.removeItem(optiStr + 'events');
+      localStorage.removeItem(optiStr + 'layer_states');
+      localStorage.removeItem(optiStr + 'session_state');
+      localStorage.removeItem(optiStr + 'variation_map');
+      localStorage.removeItem(optiStr + 'visitor_profile');
+      localStorage.removeItem(optiStr + 'layer_map');
+      localStorage.removeItem(optiStr + 'tracker_optimizely');
+      localStorage.removeItem(optiStr + 'pending_events');
       deleteCookie('optimizelyEndUserId');
     }
     else{
