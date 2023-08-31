@@ -58,6 +58,10 @@
   <!--Semgent-->
   <!--Optimizely OptOut-->
   <script>
+    function deleteCookie(name) {
+      document.cookie = name + '=; path=/;';
+    }
+
     if (localStorage.getItem('optedOut') === 'true'){
       console.log('User has opted out.');
       window["optimizely"] = window["optimizely"] || [];
@@ -65,6 +69,16 @@
       "type": "optOut",
       "isOptOut": true
       })
+      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$event_queue');
+      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$events');
+      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$layer_states');
+      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$session_state');
+      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$variation_map');
+      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$visitor_profile');
+      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$layer_map');
+      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$tracker_optimizely');
+      localStorage.removeItem('optimizelyData$${visitorId}$${projectNamespace}$$pending_events');
+      deleteCookie('optimizelyEndUserId');
     }
     else{
       console.log('User has not opted out.');
@@ -89,6 +103,15 @@
         "type": "sendEvents"
       });
     }
+
+    if (localStorage.getItem('disableOpti') === 'true'){
+      console.log('User is disabling Optimizely.');
+      window["optimizely"] = window["optimizely"] || [];
+      window["optimizely"].push({
+        "type": "disable"
+      });
+    }
+
   </script>
   <!--Optimizely OptOut-->
   <!--Optimizely-->
