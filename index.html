@@ -140,11 +140,21 @@
       });
     }
 
+    var optiUserId = localStorage.getItem('optiUserId');
+    if (optiUserId !== null && optiUserId !== ""){
+      console.log('Found old optiEndUserId');
+      var expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 180);
+      var cookieString = "optimizelyEndUserId=" + encodeURIComponent(optiUserId) + "; expires=" + expirationDate.toUTCString() + "; path=/";
+      document.cookie = cookieString;
+    }
+
+
   </script>
   <!--Optimizely OptOut-->
   <!--Optimizely-->
-  <!-- WEB <script src="https://cdn.optimizely.com/js/23318520138.js"></script>-->
-  <!--WEB DEMO --> <script src="https://cdn.optimizely.com/js/24946860706.js"></script>
+  <!-- WEB--> <script src="https://cdn.optimizely.com/js/23318520138.js"></script>
+  <!--WEB DEMO  <script src="https://cdn.optimizely.com/js/24946860706.js"></script> -->
   <!--Optimizely-->
 </head>
   <body>
