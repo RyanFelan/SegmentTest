@@ -143,6 +143,7 @@
     var optiUserId = localStorage.getItem('optiUserId');
     if (optiUserId !== null && optiUserId !== ""){
       console.log('Found old optiEndUserId');
+      deleteCookie('optimizelyEndUserId');
       var expirationDate = new Date();
       expirationDate.setDate(expirationDate.getDate() + 180);
       var cookieString = "optimizelyEndUserId=" + encodeURIComponent(optiUserId) + "; expires=" + expirationDate.toUTCString() + "; path=/";
