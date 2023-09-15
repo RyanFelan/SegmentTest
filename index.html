@@ -70,7 +70,7 @@
   <!--Optimizely OptOut-->
   <script>
     function deleteCookie(cookieName) {
-      document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+      document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.ryanfelan.github.io; path=/;`;
     }
 
     function getCookie(name) {
@@ -146,7 +146,7 @@
       deleteCookie('optimizelyEndUserId');
       var expirationDate = new Date();
       expirationDate.setDate(expirationDate.getDate() + 180);
-      var cookieString = "optimizelyEndUserId=" + encodeURIComponent(optiUserId) + "; expires=" + expirationDate.toUTCString() + ";" + "domain=.example.com;" +" path=/";
+      var cookieString = "optimizelyEndUserId=" + encodeURIComponent(optiUserId) + "; expires=" + expirationDate.toUTCString() + ";" + "domain=.ryanfelan.github.io;" +" path=/";
       document.cookie = cookieString;
     }
 
