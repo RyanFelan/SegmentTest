@@ -146,7 +146,7 @@
       deleteCookie('optimizelyEndUserId');
       var expirationDate = new Date();
       expirationDate.setDate(expirationDate.getDate() + 180);
-      var cookieString = "optimizelyEndUserId=" + encodeURIComponent(optiUserId) + "; expires=" + expirationDate.toUTCString() + "; path=/";
+      var cookieString = "optimizelyEndUserId=" + encodeURIComponent(optiUserId) + "; expires=" + expirationDate.toUTCString() + ";" + "domain=.example.com;" +" path=/";
       document.cookie = cookieString;
     }
 
