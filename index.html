@@ -159,6 +159,11 @@
   </script>
   <!--Optimizely OptOut-->
   <!--Optimizely-->
+  <script>
+    for (let i = 1; i <= 100; i++) {
+      console.log(i);
+    }
+</script>
   <!-- WEB--> <script src="https://cdn.optimizely.com/js/23318520138.js"></script> 
   <!--WEB DEMO  <script src="https://cdn.optimizely.com/js/24946860706.js"></script> -->
   <!--custom Snippet <script src="https://cdn.optimizely.com/public/22142830599/s/test_custom_snippet.js"></script>-->
@@ -196,17 +201,6 @@
               }
             });
         }
-
-        for (let i = 1; i <= 100; i++) {
-            console.log(i);
-        }
-
-
-        // sends the activate push to the Optimizely snippet
-        window["optimizely"].push({
-          "type": "activate"
-        });
-
     </script>
   </body>
 </html>
