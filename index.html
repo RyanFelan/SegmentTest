@@ -150,12 +150,6 @@
       var cookieString = "optimizelyEndUserId=" + encodeURIComponent(optiUserId) + "; expires=" + expirationDate.toUTCString() + ";" + "domain=.ryanfelan.github.io;" +" path=/";
       document.cookie = cookieString;
     }
-
-    window["optimizely"] = window["optimizely"] || [];
-      window["optimizely"].push({
-        "type": "disable"
-      });
-
   </script>
   <!--Optimizely OptOut-->
   <!--Optimizely-->
@@ -163,7 +157,7 @@
     for (let i = 1; i <= 100; i++) {
       console.log(i);
     }
-</script>
+  </script>
   <!-- WEB--> <script src="https://cdn.optimizely.com/js/23318520138.js"></script> 
   <!--WEB DEMO  <script src="https://cdn.optimizely.com/js/24946860706.js"></script> -->
   <!--custom Snippet <script src="https://cdn.optimizely.com/public/22142830599/s/test_custom_snippet.js"></script>-->
