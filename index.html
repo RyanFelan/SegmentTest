@@ -154,11 +154,27 @@
   <!--Optimizely OptOut-->
   <!--Optimizely-->
   <script>
-    for (let i = 1; i <= 100; i++) {
-      console.log(i);
+    for (let i = 1; i <= 5; i++) {
+        setTimeout(() => {
+            console.log(i);
+
+            // After counting to 5, run additional code
+            if (i === 5) {
+                console.log("Counting complete! Running additional code...");
+                
+                // Dynamically load the external script
+                let script = document.createElement('script');
+                script.src = "https://cdn.optimizely.com/js/23318520138.js";
+                document.head.appendChild(script);
+
+                // Additional code here
+                // Add your code below this line
+            }
+        }, i * 1000); // Delay of i seconds
     }
   </script>
-  <!-- WEB--> <script src="https://cdn.optimizely.com/js/23318520138.js"></script> 
+
+  <!-- WEB-- <script src="https://cdn.optimizely.com/js/23318520138.js"></script--> 
   <!--WEB DEMO  <script src="https://cdn.optimizely.com/js/24946860706.js"></script> -->
   <!--custom Snippet <script src="https://cdn.optimizely.com/public/22142830599/s/test_custom_snippet.js"></script>-->
   <!--Optimizely-->
