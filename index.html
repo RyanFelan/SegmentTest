@@ -151,6 +151,10 @@
       document.cookie = cookieString;
     }
 
+    window["optimizely"] = window["optimizely"] || [];
+      window["optimizely"].push({
+        "type": "disable"
+      });
 
   </script>
   <!--Optimizely OptOut-->
@@ -192,6 +196,18 @@
               }
             });
         }
+
+        for (let i = 1; i <= 10; i++) {
+            console.log(i);
+        }
+        // ensures the optimizely object is defined globally
+        window['optimizely'] = window['optimizely'] || [];
+
+        // sends the activate push to the Optimizely snippet
+        window["optimizely"].push({
+          "type": "activate"
+        });
+
     </script>
   </body>
 </html>
