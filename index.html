@@ -7,13 +7,13 @@
   <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
   script-src 'self' https://*.optimizely.com https://optimizely.s3.amazonaws.com https://cdn-assets-prod.s3.amazonaws.com 'unsafe-inline';
-  style-src 'self';
+  style-src 'unsafe-inline';
   frame-src https://a22142830599.cdn.optimizely.com https://a22142830599.cdn-pci.optimizely.com https://www.youtube.com/ https://ryanfelan.github.io/WebTest/;
   connect-src https://logx.optimizely.com https://*.optimizely.com;
   img-src https://cdn.optimizely.com;
 ">
 
-
+<!--style-src 'self';-->
 
   <title>Segment Tester</title>
   <!--<script src="https://optimizely-edge.com/edge-client/v1/22142830599/22467302281?url=https://ryanfelan.github.io/SegmentTest/"></script>-->
