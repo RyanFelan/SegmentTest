@@ -112,7 +112,7 @@
         "type": "optOut",
         "isOptOut": true
       })
-      const optimizelyEndUserId = getCookie('optimizelyEndUserId');
+      //const optimizelyEndUserId = getCookie('optimizelyEndUserId');
       //const optiStr = 'optimizely_data$$' + optimizelyEndUserId + '$$23318520138$$';
       //localStorage.removeItem(optiStr + 'event_queue');
       //localStorage.removeItem(optiStr + 'events');
@@ -178,15 +178,31 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NR26X8C"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <-- End Google Tag Manager (noscript) -->
-    <p className="text-lg text-center mt-4">Optimizely End User ID: ${optimizelyEndUserId}</p>
-    <pre>Segment Tester</pre>
-    <div>test text</div>
-    <button onclick="segmentFunction()" data-tracking-step="callout_step">Segment Track Call</button>
-    <button onclick="audienceAdd()" data-tracking-step="last_step">High Roller</button>
+    
+    <p id="cookieValue"></p>
 
-    <div>
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        // Get the cookie value for optimizelyEndUserId and display it
+        const optimizelyUserId = getCookie('optimizelyEndUserId');
+        document.getElementById('cookieValue').innerText = `Optimizely User ID: ${optimizelyUserId}`;
+    </script>
+    
+
+
+
+    <pre>Segment Tester</pre>
+    <button onclick="segmentFunction()" data-tracking-step="callout_step">Segment Track Call</button>
+    <button onclick="audienceAdd()" data-tracking-step="last_step">Test Button</button>
+
+    <!--div>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/fheibWCUPJ8?si=CvSvRNKikfjwgGw7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+    </div-->
 
     <!--<h1>Embedded Content</h1>-->
     <div>
