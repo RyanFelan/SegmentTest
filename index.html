@@ -193,7 +193,7 @@
         const optimizelyUserId = getCookie('optimizelyEndUserId');
         document.getElementById('cookieValue').innerText = `Optimizely User ID: ${optimizelyUserId}`;
         if (optimizelyEndUserId) {
-          const iframe = document.querySelector('iframe'); // Make sure this selects your specific iframe
+          const iframe = document.querySelector('iframe[src="https://my-next-js-demo-jade.vercel.app/webx"]');
           iframe.contentWindow.postMessage({ cookieName: 'optimizelyEndUserId', cookieValue: optimizelyEndUserId }, 'https://my-next-js-demo-jade.vercel.app');
         }
     </script>
