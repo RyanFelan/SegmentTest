@@ -192,8 +192,10 @@
         // Get the cookie value for optimizelyEndUserId and display it
         const optimizelyUserId = getCookie('optimizelyEndUserId');
         document.getElementById('cookieValue').innerText = `Optimizely User ID: ${optimizelyUserId}`;
+        console.warn("Message received from an unknown origin");
         if (optimizelyUserId) {
           const iframe = document.querySelector('iframe[src="https://my-next-js-demo-jade.vercel.app/webx"]');
+          console.warn("Message received from an unknown origin");
           iframe.contentWindow.postMessage({ cookieName: 'optimizelyEndUserId', cookieValue: optimizelyUserId }, 'https://my-next-js-demo-jade.vercel.app');
         }
 
