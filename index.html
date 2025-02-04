@@ -192,11 +192,11 @@
         // Get the cookie value for optimizelyEndUserId and display it
         const optimizelyUserId = getCookie('optimizelyEndUserId');
         document.getElementById('cookieValue').innerText = `Optimizely User ID: ${optimizelyUserId}`;
-        if (optimizelyEndUserId) {
+        if (optimizelyUserId) {
           const iframe = document.querySelector('iframe[src="https://my-next-js-demo-jade.vercel.app/webx"]');
-          console.log('found iframe',iframe);
-          iframe.contentWindow.postMessage({ cookieName: 'optimizelyEndUserId', cookieValue: optimizelyEndUserId }, 'https://my-next-js-demo-jade.vercel.app');
+          iframe.contentWindow.postMessage({ cookieName: 'optimizelyEndUserId', cookieValue: optimizelyUserId }, 'https://my-next-js-demo-jade.vercel.app');
         }
+
     </script>
     
 
