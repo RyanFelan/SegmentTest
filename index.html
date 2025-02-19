@@ -3,75 +3,49 @@
   <head>
     <meta charset="UTF-8">
     <title>Test Site</title>
-
-    <!-- Optimizely Snippet -->
-    <script src="https://cdn.optimizely.com/js/23318520138.js"></script>
-
-    <!-- Optimizely OptOut -->
     <script>
-      function deleteCookie(cookieName) {
-        document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.ryanfelan.github.io; path=/;`;
-      }
-
       function getCookie(name) {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
           const cookie = cookies[i].trim();
           if (cookie.startsWith(name + '=')) {
-            const value = cookie.substring(name.length + 1);
-            return value;
+            return cookie.substring(name.length + 1);
           }
         }
         return null;
       }
 
-      const optimizelyUserId = getCookie('optimizelyEndUserId');
-      document.addEventListener("DOMContentLoaded", function() {
-        if (optimizelyUserId) {
-          console.log(`Optimizely User ID found: ${optimizelyUserId}`);
+      function waitForOptimizelyUserId() {
+        const checkUserIdInterval = setInterval(() => {
+          const optimizelyUserId = getCookie('optimizelyEndUserId');
+          if (optimizelyUserId) {
+            console.log('Optimizely User ID found:', optimizelyUserId);
+            clearInterval(checkUserIdInterval);
 
-          // Poll for the iframe every 500ms
-          const checkIframe = setInterval(() => {
-            const iframe = document.querySelector('iframe[src="https://my-next-js-demo-jade.vercel.app/webx"]');
-            console.warn("Checking for iframe...", iframe);
+            // Dynamically insert the iframe after the cookie is found
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://my-next-js-demo-jade.vercel.app/webx';
+            iframe.width = '600';
+            iframe.height = '400';
+            iframe.onload = function() {
+              console.log('Iframe loaded, sending message...');
+              iframe.contentWindow.postMessage({
+                cookieName: 'optimizelyEndUserId',
+                cookieValue: optimizelyUserId
+              }, 'https://my-next-js-demo-jade.vercel.app');
+            };
+            document.body.appendChild(iframe);
+          } else {
+            console.warn('Optimizely User ID not found, retrying...');
+          }
+        }, 500); // Poll every 500ms
+      }
 
-            if (iframe && iframe.contentWindow) {
-              console.log("Iframe found, sending message...");
-
-              // Clear the interval once the iframe is found
-              clearInterval(checkIframe);
-
-              iframe.onload = function () {
-                iframe.contentWindow.postMessage({
-                  cookieName: 'optimizelyEndUserId',
-                  cookieValue: optimizelyUserId
-                }, 'https://my-next-js-demo-jade.vercel.app');
-              };
-            }
-          }, 500);
-        } else {
-          console.log('Optimizely User ID not found, waiting...');
-        }
-      });
+      // Wait for DOM content to load and then check for the Optimizely User ID
+      document.addEventListener('DOMContentLoaded', waitForOptimizelyUserId);
     </script>
   </head>
-
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NR26X8C" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <p id="cookieValue">Optimizely User ID: <span id="optimizelyUserIdDisplay"></span></p>
-
-    <script>
-      // Display the Optimizely User ID in the paragraph
-      const optimizelyUserIdDisplay = document.getElementById('optimizelyUserIdDisplay');
-      optimizelyUserIdDisplay.innerText = getCookie('optimizelyEndUserId') || 'Not available';
-    </script>
-
-    <!-- Iframe waiting for Optimizely End User ID -->
-    <iframe src="https://my-next-js-demo-jade.vercel.app/webx" width="600" height="400"></iframe>
+    <p id="cookieValue">Waiting for Optimizely User ID...</p>
   </body>
 </html>
