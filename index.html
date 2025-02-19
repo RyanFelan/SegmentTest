@@ -2,6 +2,21 @@
 <html>
   <head>
   <meta charset="UTF-8">
+  <!--Demo CSP-->
+  <!--meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://app.optimizely.com; style-src 'self';"-->
+  <!--meta http-equiv="Content-Security-Policy" content="
+  default-src 'none';
+  script-src 'self' https://*.optimizely.com https://optimizely.s3.amazonaws.com https://cdn-assets-prod.s3.amazonaws.com 'unsafe-inline';
+  frame-src https://a22142830599.cdn.optimizely.com https://www.youtube.com/ https://ryanfelan.github.io/WebTest/;
+  connect-src https://logx.optimizely.com https://*.optimizely.com;
+  img-src https://app.optimizely.com https://cdn.optimizely.com;
+  style-src 'unsafe-inline';
+  "-->
+  <!--meta http-equiv="Content-Security-Policy" content="default-src *; script-src *; style-src *; img-src *; font-src *; connect-src *; frame-src *; object-src *;"-->
+<!--
+  style-src 'self';
+  style-src 'unsafe-inline';
+-->
 
   <title>Segment Tester</title>
   <!--<script src="https://optimizely-edge.com/edge-client/v1/22142830599/22467302281?url=https://ryanfelan.github.io/SegmentTest/"></script>-->
@@ -71,7 +86,7 @@
   <!--Optimizely OptOut-->
   <script>
     function deleteCookie(cookieName) {
-      document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.ryanfelan.github.io; path=/;`;
+      document.cookie = ${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.ryanfelan.github.io; path=/;;
     }
 
     function getCookie(name) {
@@ -168,18 +183,18 @@
 
     <script>
         function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
+            const value = ; ${document.cookie};
+            const parts = value.split(; ${name}=);
             if (parts.length === 2) return parts.pop().split(';').shift();
         }
 
 
         // Get the cookie value for optimizelyEndUserId and display it
         const optimizelyUserId = getCookie('optimizelyEndUserId');
-        document.getElementById('cookieValue').innerText = `Optimizely User ID: ${optimizelyUserId}`;
+        document.getElementById('cookieValue').innerText = Optimizely User ID: ${optimizelyUserId};
 
         if (optimizelyUserId) {
-          console.log(`Optimizely User ID found: ${optimizelyUserId}`);
+          console.log(Optimizely User ID found: ${optimizelyUserId});
 
           // Poll for the iframe every 500ms
           const checkIframe = setInterval(() => {
