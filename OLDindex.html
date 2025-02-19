@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+
+  <title>Segment Tester</title>
+  <!--<script src="https://optimizely-edge.com/edge-client/v1/22142830599/22467302281?url=https://ryanfelan.github.io/SegmentTest/"></script>-->
+  
+
+  <!-- Google tag (gtag.js) GAU --
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-270356377-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-270356377-1');
+  </script>
+  !-- Google tag (gtag.js) GAU -->
+  
+  <!-- Hotjar Tracking Code for https://ryanfelan.github.io/SegmentTest/ >
+  <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3607830,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+  <-- Hotjar Tracking Code for https://ryanfelan.github.io/SegmentTest/ -->
+
+  <!-- Google tag (gtag.js) GA4 --
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-89Z2S3ESWV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    console.log('init gtag');
+    gtag('js', new Date());
+    gtag('config', 'G-89Z2S3ESWV');
+  </script>
+  !-- End Google tag (gtag.js) GA4 -->
+
+  <!-- Google tag (gtag.js) GA4 OOTB Integration--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBQYZRV8Z0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XBQYZRV8Z0');
+  </script>
+  !-- Google tag (gtag.js) GA4 Integration-->
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NR26X8C');</script>
+  <!-- End Google Tag Manager -->
+
+  <!--Semgent-->
+  <script>
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="bGDfP2EXClSR7msImgYgAGHhUSFVpDHP";;analytics.SNIPPET_VERSION="4.15.3";
+    analytics.load("bGDfP2EXClSR7msImgYgAGHhUSFVpDHP");
+    analytics.page();
+    }}();
+  </script>
+  <!--Semgent-->
+  <!--Optimizely OptOut-->
+  <script>
+    function deleteCookie(cookieName) {
+      document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.ryanfelan.github.io; path=/;`;
+    }
+
+    function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Check if this is the cookie you want based on its name
+        if (cookie.startsWith(name + '=')) {
+            value = cookie.substring(name.length + 1);
+            value = cookie.split('=');
+            return value[1];
+        }
+    }
+    // If the cookie is not found, return null or an appropriate value
+    return null;
+}
+
+
+    if (localStorage.getItem('optedOut') === 'true'){
+      console.log('User has opted out.');
+      window["optimizely"] = window["optimizely"] || [];
+      window["optimizely"].push({
+        "type": "optOut",
+        "isOptOut": true
+      })
+      //const optimizelyEndUserId = getCookie('optimizelyEndUserId');
+      //const optiStr = 'optimizely_data$$' + optimizelyEndUserId + '$$23318520138$$';
+      //localStorage.removeItem(optiStr + 'event_queue');
+      //localStorage.removeItem(optiStr + 'events');
+      //localStorage.removeItem(optiStr + 'layer_states');
+      //localStorage.removeItem(optiStr + 'session_state');
+      //localStorage.removeItem(optiStr + 'variation_map');
+      //localStorage.removeItem(optiStr + 'visitor_profile');
+      //localStorage.removeItem(optiStr + 'layer_map');
+      //localStorage.removeItem(optiStr + 'tracker_optimizely');
+      //localStorage.removeItem(optiStr + 'pending_events');
+    }
+    else{
+      console.log('User has not opted out.');
+      window["optimizely"] = window["optimizely"] || [];
+      window["optimizely"].push({
+        "type": "optOut",
+        "isOptOut": false
+      });
+    }
+
+    if (localStorage.getItem('holdEvents') === 'true'){
+      console.log('User is holding events.');
+      window["optimizely"] = window["optimizely"] || [];
+      window["optimizely"].push({
+        "type": "holdEvents"
+      });
+    }
+    else{
+      console.log('User is not holding events.');
+      window["optimizely"] = window["optimizely"] || [];
+      window["optimizely"].push({
+        "type": "sendEvents"
+      });
+    }
+
+    if (localStorage.getItem('disableOpti') === 'true'){
+      console.log('User is disabling Optimizely.');
+      window["optimizely"] = window["optimizely"] || [];
+      window["optimizely"].push({
+        "type": "disable"
+      });
+    }
+
+    var optiUserId = localStorage.getItem('optiUserId');
+    if (optiUserId !== null && optiUserId !== ""){
+      console.log('Found old optiEndUserId');
+      deleteCookie('optimizelyEndUserId');
+      var expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 180);
+      var cookieString = "optimizelyEndUserId=" + encodeURIComponent(optiUserId) + "; expires=" + expirationDate.toUTCString() + ";" + "domain=.ryanfelan.github.io;" +" path=/";
+      document.cookie = cookieString;
+    }
+  </script>
+  <!--Optimizely OptOut-->
+  <!--Optimizely-->
+  <!-- WEB--> <script src="https://cdn.optimizely.com/js/23318520138.js"></script> 
+  <!--WEB DEMO  <script src="https://cdn.optimizely.com/js/24946860706.js"></script> -->
+  <!--custom Snippet <script src="https://cdn.optimizely.com/public/22142830599/s/test_custom_snippet.js"></script>-->
+  <!--Optimizely-->
+</head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NR26X8C"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <p id="cookieValue"></p>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+
+        // Get the cookie value for optimizelyEndUserId and display it
+        const optimizelyUserId = getCookie('optimizelyEndUserId');
+        document.getElementById('cookieValue').innerText = `Optimizely User ID: ${optimizelyUserId}`;
+
+        if (optimizelyUserId) {
+          console.log(`Optimizely User ID found: ${optimizelyUserId}`);
+
+          // Poll for the iframe every 500ms
+          const checkIframe = setInterval(() => {
+            const iframe = document.querySelector('iframe[src="https://my-next-js-demo-jade.vercel.app/webx"]');
+            console.warn("Checking for iframe...", iframe);
+
+            // If the iframe is found and its contentWindow is accessible, post the message
+            if (iframe && iframe.contentWindow) {
+              console.log("Iframe found, sending message...");
+
+              // Clear the interval once the iframe is found
+              clearInterval(checkIframe);
+
+              iframe.onload = function() {
+                iframe.contentWindow.postMessage({
+                  cookieName: 'optimizelyEndUserId',
+                  cookieValue: optimizelyUserId
+                }, 'https://my-next-js-demo-jade.vercel.app');
+              };
+            }
+          }, 10); // Check every 500 milliseconds
+        }
+
+
+    </script>
+    
+
+
+
+    <pre>Segment Tester</pre>
+    <button onclick="segmentFunction()" data-tracking-step="callout_step">Segment Track Call</button>
+    <button onclick="audienceAdd()" data-tracking-step="last_step">Test Button</button>
+
+    <!--div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/fheibWCUPJ8?si=CvSvRNKikfjwgGw7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div-->
+
+    <!--<h1>Embedded Content</h1>-->
+    <div>
+      <!-- Example of an iframe embedding another website -->
+      <iframe src="https://my-next-js-demo-jade.vercel.app/webx" 
+          width="100%" 
+          height="600px">
+           <!-- style="border:none;">-->
+      </iframe>
+    </div>
+
+    <script>
+        function segmentFunction() {
+          //var script = document.createElement('script');
+          //script.src = 'https://cdn.optimizely.com/js/23318520138.js';
+          //document.head.appendChild(script);
+          analytics.track("segment_test", {
+              revenue: 200000,
+              value: 1.00 
+          });
+        }
+
+        function audienceAdd() {
+            window.optimizely = window.optimizely || [];
+            window.optimizely.push({
+              "type": "user",
+              "attributes": {
+                "gold_member": "true"
+              }
+            });
+        }
+    </script>
+  </body>
+</html>
