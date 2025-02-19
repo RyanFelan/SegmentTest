@@ -1,51 +1,71 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Test Site</title>
-    <script>
-      function getCookie(name) {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iframe Waiting for Optimizely User ID</title>
+
+  <!-- Optimizely Script -->
+  <script src="https://cdn.optimizely.com/js/23318520138.js"></script>
+  
+  <script>
+    function getCookie(name) {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
           const cookie = cookies[i].trim();
           if (cookie.startsWith(name + '=')) {
-            return cookie.substring(name.length + 1);
+              return cookie.substring(name.length + 1);
           }
-        }
-        return null;
       }
+      return null;
+    }
 
-      function waitForOptimizelyUserId() {
-        const checkUserIdInterval = setInterval(() => {
-          const optimizelyUserId = getCookie('optimizelyEndUserId');
-          if (optimizelyUserId) {
-            console.log('Optimizely User ID found:', optimizelyUserId);
-            clearInterval(checkUserIdInterval);
+    document.addEventListener("DOMContentLoaded", function() {
+      const optimizelyUserId = getCookie('optimizelyEndUserId');
+      
+      if (optimizelyUserId) {
+        console.log(`Optimizely User ID found: ${optimizelyUserId}`);
 
-            // Dynamically insert the iframe after the cookie is found
-            const iframe = document.createElement('iframe');
-            iframe.src = 'https://my-next-js-demo-jade.vercel.app/webx';
-            iframe.width = '600';
-            iframe.height = '400';
+        // Poll for iframe every 500ms until it's found
+        const checkIframe = setInterval(() => {
+          const iframe = document.querySelector('iframe#demoIframe');
+          console.warn("Checking for iframe...", iframe);
+
+          if (iframe && iframe.contentWindow) {
+            console.log("Iframe found, sending message...");
+
+            // Clear interval once iframe is found
+            clearInterval(checkIframe);
+
             iframe.onload = function() {
-              console.log('Iframe loaded, sending message...');
               iframe.contentWindow.postMessage({
                 cookieName: 'optimizelyEndUserId',
                 cookieValue: optimizelyUserId
               }, 'https://my-next-js-demo-jade.vercel.app');
             };
-            document.body.appendChild(iframe);
-          } else {
-            console.warn('Optimizely User ID not found, retrying...');
           }
-        }, 500); // Poll every 500ms
+        }, 500);
+      } else {
+        console.warn('Optimizely User ID not found, iframe will not load yet.');
       }
+    });
+  </script>
+</head>
 
-      // Wait for DOM content to load and then check for the Optimizely User ID
-      document.addEventListener('DOMContentLoaded', waitForOptimizelyUserId);
-    </script>
-  </head>
-  <body>
-    <p id="cookieValue">Waiting for Optimizely User ID...</p>
-  </body>
+<body>
+  <h1>Segment Tester</h1>
+  <p id="cookieValue">Waiting for Optimizely User ID...</p>
+
+  <!-- Placeholder for iframe -->
+  <iframe id="demoIframe" src="https://my-next-js-demo-jade.vercel.app/webx" width="100%" height="500px" style="display: none;"></iframe>
+
+  <script>
+    // Display the Optimizely User ID when found
+    const optimizelyUserId = getCookie('optimizelyEndUserId');
+    if (optimizelyUserId) {
+      document.getElementById('cookieValue').innerText = `Optimizely User ID: ${optimizelyUserId}`;
+      document.getElementById('demoIframe').style.display = 'block';
+    }
+  </script>
+</body>
 </html>
