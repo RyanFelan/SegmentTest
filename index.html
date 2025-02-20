@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>Parent Site</h1>
-    <p id="cookieValue"></p>
+    <p id="cookieValue">Waiting for cookie...</p>
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
@@ -20,6 +20,16 @@
         }
 
         const optimizelyUserId = getCookie('optimizelyEndUserId');
+        
+        // Display the cookie value on the parent site
+        const cookieValueElement = document.getElementById('cookieValue');
+        if (cookieValueElement) {
+          if (optimizelyUserId) {
+            cookieValueElement.textContent = `Optimizely User ID: ${optimizelyUserId}`;
+          } else {
+            cookieValueElement.textContent = 'Optimizely User ID not found';
+          }
+        }
 
         // Send the cookie value to the child iframe
         const iframe = document.querySelector('iframe');
