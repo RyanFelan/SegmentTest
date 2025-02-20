@@ -19,13 +19,13 @@
           if (parts.length === 2) return parts.pop().split(';').shift();
         }
 
-        const optimizelyUserId = getCookie('optimizelyEndUserId');
+        const optimizelyEndUserId = getCookie('optimizelyEndUserId');
         
         // Display the cookie value on the parent site
         const cookieValueElement = document.getElementById('cookieValue');
         if (cookieValueElement) {
-          if (optimizelyUserId) {
-            cookieValueElement.textContent = `Optimizely User ID: ${optimizelyUserId}`;
+          if (optimizelyEndUserId) {
+            cookieValueElement.textContent = `Optimizely User ID: ${optimizelyEndUserId}`;
           } else {
             cookieValueElement.textContent = 'Optimizely User ID not found';
           }
@@ -36,7 +36,7 @@
         if (iframe) {
           iframe.onload = function() {
             iframe.contentWindow.postMessage(
-              { optimizelyUserId },
+              { optimizelyEndUserId },
               'https://opti-react-demo.vercel.app' // Child site domain
             );
           };
