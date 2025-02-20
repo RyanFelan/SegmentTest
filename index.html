@@ -12,22 +12,28 @@
     <p id="cookieValue"></p>
 
     <script>
-      function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-      }
+      document.addEventListener('DOMContentLoaded', function () {
+        function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+        }
 
-      const optimizelyUserId = getCookie('optimizelyEndUserId');
+        const optimizelyUserId = getCookie('optimizelyEndUserId');
 
-      // Send the cookie value to the child iframe
-      const iframe = document.querySelector('iframe');
-      iframe.onload = function() {
-        iframe.contentWindow.postMessage(
-          { optimizelyUserId },
-          'https://opti-react-demo.vercel.app' // Child site domain
-        );
-      };
+        // Send the cookie value to the child iframe
+        const iframe = document.querySelector('iframe');
+        if (iframe) {
+          iframe.onload = function() {
+            iframe.contentWindow.postMessage(
+              { optimizelyUserId },
+              'https://opti-react-demo.vercel.app' // Child site domain
+            );
+          };
+        } else {
+          console.error('Iframe not found');
+        }
+      });
     </script>
   
     <div>
