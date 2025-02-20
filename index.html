@@ -13,17 +13,22 @@
     <p id="cookieValue"></p>
 
     <script>
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        }
-
-
-        // Get the cookie value for optimizelyEndUserId and display it
-        const optimizelyUserId = getCookie('optimizelyEndUserId');
-        document.getElementById('cookieValue').innerText = `Optimizely User ID: ${optimizelyUserId}`;
+      function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+  
+      const optimizelyUserId = getCookie('optimizelyEndUserId');
+      document.getElementById('cookieValue').innerText = `Optimizely User ID: ${optimizelyUserId}`;
+  
+      // Send the cookie value to the iframe
+      const iframe = document.querySelector('iframe');
+      iframe.onload = function () {
+          iframe.contentWindow.postMessage({ optimizelyUserId }, '*');
+      };
     </script>
+  
     
     <div>
       <!-- Example of an iframe embedding another website -->
