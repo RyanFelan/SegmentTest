@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta charset="UTF-8">
-
-  <title>Test</title>
-  <!--Optimizely-->
-  <!-- WEB--> <script src="https://cdn.optimizely.com/js/23318520138.js"></script> 
-  <!--Optimizely-->
-</head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <!-- Optimizely -->
+    <script src="https://cdn.optimizely.com/js/23318520138.js"></script> 
+    <!-- Optimizely -->
+  </head>
   <body>
     <h1>Parent Site</h1>
     <p id="cookieValue"></p>
@@ -18,9 +17,9 @@
         const parts = value.split(`; ${name}=`);
         if (parts.length === 2) return parts.pop().split(';').shift();
       }
-    
+
       const optimizelyUserId = getCookie('optimizelyEndUserId');
-    
+
       // Send the cookie value to the child iframe
       const iframe = document.querySelector('iframe');
       iframe.onload = function() {
@@ -30,15 +29,12 @@
         );
       };
     </script>
-    
   
-    
     <div>
       <!-- Example of an iframe embedding another website -->
-      <iframe src="https://opti-react-demo.vercel.app" 
+      <iframe src="https://opti-react-demo.vercel.app/webx" 
           width="100%" 
           height="600px">
-           <!-- style="border:none;">-->
       </iframe>
     </div>
   </body>
