@@ -14,20 +14,23 @@
 
     <script>
       function getCookie(name) {
-          const value = `; ${document.cookie}`;
-          const parts = value.split(`; ${name}=`);
-          if (parts.length === 2) return parts.pop().split(';').shift();
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
       }
-  
+    
       const optimizelyUserId = getCookie('optimizelyEndUserId');
-      document.getElementById('cookieValue').innerText = `Optimizely User ID: ${optimizelyUserId}`;
-  
-      // Send the cookie value to the iframe
+    
+      // Send the cookie value to the child iframe
       const iframe = document.querySelector('iframe');
-      iframe.onload = function () {
-          iframe.contentWindow.postMessage({ optimizelyUserId }, '*');
+      iframe.onload = function() {
+        iframe.contentWindow.postMessage(
+          { optimizelyUserId },
+          'https://my-next-js-demo-jade.vercel.app' // Child site domain
+        );
       };
     </script>
+    
   
     
     <div>
