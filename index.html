@@ -23,30 +23,6 @@
         // Get the cookie value for optimizelyEndUserId and display it
         const optimizelyUserId = getCookie('optimizelyEndUserId');
         document.getElementById('cookieValue').innerText = `Optimizely User ID: ${optimizelyUserId}`;
-
-        if (optimizelyUserId) {
-          console.log(`Optimizely User ID found: ${optimizelyUserId}`);
-
-          const checkIframe = setInterval(() => {
-            const iframe = document.querySelector('iframe[src="https://my-next-js-demo-jade.vercel.app/webx"]');
-            console.log("Checking for iframe...", iframe);
-
-            // If the iframe is found and its contentWindow is accessible, post the message
-            if (iframe && iframe.contentWindow) {
-              console.log("Iframe found, sending message...");
-
-              // Clear the interval once the iframe is found
-              clearInterval(checkIframe);
-
-              iframe.onload = function() {
-                iframe.contentWindow.postMessage({
-                  cookieName: 'optimizelyEndUserId',
-                  cookieValue: optimizelyUserId
-                }, 'https://my-next-js-demo-jade.vercel.app');
-              };
-            }
-          }, 10);
-        }
     </script>
     
     <div>
