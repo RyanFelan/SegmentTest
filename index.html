@@ -156,12 +156,15 @@
     <p id="cookieValue"></p>
 
     <script id="optimizely-hydration" data-nscript="afterInteractive">
-      window['optimizely'] = window['optimizely'] || [];
-      // Trigger the activate event for the Optimizely snippet
-      window['optimizely'].push({
-        type: 'activate'
-      });
+      if (document.cookie.split('; ').some(cookie => cookie.startsWith('optiPush='))) {
+        window['optimizely'] = window['optimizely'] || [];
+        // Trigger the activate event for the Optimizely snippet
+        window['optimizely'].push({
+          type: 'activate'
+        });
+      }
     </script>
+    
 
     <script>
         function getCookie(name) {
