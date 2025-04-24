@@ -158,7 +158,7 @@
     <!--<script id="optimizely-hydration" data-nscript="afterInteractive"> -->
       <script>
       //if (document.cookie.split('; ').some(cookie => cookie.startsWith('optiPush='))) {
-        console.log('calling opti push');
+        console.warn('calling opti push');
         window['optimizely'] = window['optimizely'] || [];
         // Trigger the activate event for the Optimizely snippet
         window['optimizely'].push({
