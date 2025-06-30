@@ -142,7 +142,18 @@
   <!--Optimizely OptOut-->
   <!--Optimizely-->
   <!-- <script src="https://cdn.optimizely.com/public/22142830599/s/test.js"></script>-->
-  <!-- WEB --> <script src="https://cdn.optimizely.com/js/23318520138.js"></script> <!---->
+  <!-- WEB -->
+  <script>
+    console.log('Opti Load');
+    window['optimizely'] = window['optimizely'] || [];
+    window['optimizely'].push({
+      type: 'holdEvents'
+    });
+    console.log('Opti holdEvents');
+  </script>
+  <script src="https://cdn.optimizely.com/js/23318520138.js"></script>
+  <!-- -->
+
   <!--WEB DEMO  <script src="https://cdn.optimizely.com/js/24946860706.js"></script> -->
   <!--custom Snippet <script src="https://cdn.optimizely.com/public/22142830599/s/test_custom_snippet.js"></script>-->
   <!--Optimizely-->
@@ -219,12 +230,11 @@
 
     <!--<h1>Embedded Content</h1>-->
     <div>
-      <!-- Example of an iframe embedding another website -->
+      <!-- Example of an iframe embedding another website --
       <iframe src="https://my-next-js-demo-jade.vercel.app/webx" 
           width="100%" 
           height="600px">
-           <!-- style="border:none;">-->
-      </iframe>
+      </iframe>-->
     </div>
 
     <script>
