@@ -48,14 +48,29 @@
     })(window,document,'script','dataLayer','GTM-NR26X8C');</script>
   <!-- End Google Tag Manager -->
 
-  <!--Semgent-->
+  <!--Segment Custom Anonymous ID-->
+  <script>
+    // Set custom anonymous ID directly in localStorage using Segment's key
+    var customAnonymousId = "custom-" + Math.random().toString(36).substring(2, 15) + "-" + Date.now();
+    
+    // Set it in localStorage with the same structure Segment uses
+    localStorage.setItem('ajs_anonymous_id', JSON.stringify({
+      id: customAnonymousId,
+      creationDate: new Date().toISOString()
+    }));
+    
+    console.log('Custom ajs_anonymous_id set in localStorage:', customAnonymousId);
+  </script>
+  <!--Segment Custom Anonymous ID-->
+
+  <!--Segment-->
   <script>
     !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="bGDfP2EXClSR7msImgYgAGHhUSFVpDHP";;analytics.SNIPPET_VERSION="4.15.3";
     analytics.load("bGDfP2EXClSR7msImgYgAGHhUSFVpDHP");
     analytics.page();
     }}();
   </script>
-  <!--Semgent-->
+  <!--Segment-->
   <!--Optimizely OptOut-->
   <script>
     function deleteCookie(cookieName) {
