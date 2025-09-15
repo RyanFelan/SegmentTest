@@ -53,10 +53,10 @@
     // Set custom anonymous ID directly in localStorage using Segment's key
     var customAnonymousId = "custom-" + Math.random().toString(36).substring(2, 15) + "-" + Date.now();
     
-    // Set it in localStorage with the same structure Segment uses
+    // Set it in localStorage with the exact JSON structure Segment uses
     localStorage.setItem('ajs_anonymous_id', JSON.stringify({
-      id: customAnonymousId,
-      creationDate: new Date().toISOString()
+      "id": customAnonymousId,
+      "creationDate": new Date().toISOString()
     }));
     
     console.log('Custom ajs_anonymous_id set in localStorage:', customAnonymousId);
