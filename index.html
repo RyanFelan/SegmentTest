@@ -141,6 +141,15 @@
       });
     }
 
+    if (localStorage.getItem('disableCrossOrigin') === 'true'){
+      console.log('User is disabling Optimizely cross-origin.');
+      window["optimizely"] = window["optimizely"] || [];
+      window["optimizely"].push({
+        "type": "disableCrossOrigin"
+      });
+    }
+
+
     var optiUserId = localStorage.getItem('optiUserId');
     if (optiUserId !== null && optiUserId !== ""){
       console.log('Found old optiEndUserId');
