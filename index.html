@@ -175,12 +175,15 @@
   <script>
     window['optimizely'] = window['optimizely'] || [];
     window['optimizely'].push({ type: 'holdEvents' });
+    console.log('opti - events held, waiting for OneTrust consent');
 
     window.OneTrustCallbacks = window.OneTrustCallbacks || [];
     window.OneTrustCallbacks.push(function () {
       if (OnetrustActiveGroups && OnetrustActiveGroups.includes("C0004")) {
+        console.log('opti - consent granted (C0004), sending events');
         window['optimizely'].push({ type: 'sendEvents' });
       } else {
+        console.log('opti - consent not granted, disabling optimizely. ActiveGroups:', OnetrustActiveGroups);
         window['optimizely'].push({ type: 'disable' });
       }
     });
