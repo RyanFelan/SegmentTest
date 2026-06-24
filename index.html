@@ -300,6 +300,23 @@
               revenue: 200000,
               value: 1.00 
           });
+          window['optimizely'].push({
+            type: "event",
+            eventName: "demo_properties",
+            tags: {
+              revenue: 1000, // Optional in cents as integer (500 == $5.00)
+              value: 0.00 // Optional as float
+            },
+            // The following event properties are all optional, please choose the ones you care about in your event.
+            properties: {
+              Category: "example", // Please replace with actual data, in string format.
+              SKU: "example", // Please replace with actual data, in string format.
+              URL: "example", // Please replace with actual data, in string format.
+              Text: "example", // Please replace with actual data, in string format.
+              Subcategory: "example", // Please replace with actual data, in string format.
+              custom_1: "example", // Please replace with actual data, in string format.
+            }
+          });
         }
 
         function audienceAdd() {
