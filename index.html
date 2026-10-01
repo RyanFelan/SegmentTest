@@ -175,17 +175,12 @@
         return !!m && m[1] === '1';
       }
 
-      function apply(isConsented) {
-        console.log('[Consent POC] optOut =', !isConsented);
-        window.optimizely.push({ type: 'optOut', isOptOut: !isConsented });
-      }
-
-      apply(consented());
+      console.log('[Consent POC] consented =', consented());
 
       window.addEventListener('ConsentUpdated', function () {
         var ok = consented();
+        console.log('[Consent POC] consented =', ok);
         if (!ok) window.optimizely.push({ type: 'disable', scope: 'tracking' });
-        apply(ok);
       });
 
       // Exposed for the POC banner below.
