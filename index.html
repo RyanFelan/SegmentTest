@@ -168,6 +168,7 @@
   <script>
     (function () {
       var COOKIE = 'consent';
+      var SNIPPET = 'https://cdn.optimizely.com/js/30299580011.js';
       window.optimizely = window.optimizely || [];
 
       function consented() {
@@ -175,12 +176,27 @@
         return !!m && m[1] === '1';
       }
 
+      var loaded = false;
+      function loadSnippet() {
+        if (loaded) return;
+        loaded = true;
+        console.log('[Consent POC] loading Optimizely snippet');
+        var s = document.createElement('script');
+        s.src = SNIPPET;
+        document.head.appendChild(s);
+      }
+
       console.log('[Consent POC] consented =', consented());
+      if (consented()) loadSnippet();
 
       window.addEventListener('ConsentUpdated', function () {
         var ok = consented();
         console.log('[Consent POC] consented =', ok);
-        if (!ok) window.optimizely.push({ type: 'disable', scope: 'tracking' });
+        if (ok) {
+          loadSnippet();
+        } else {
+          window.optimizely.push({ type: 'disable', scope: 'tracking' });
+        }
       });
 
       // Exposed for the POC banner below.
@@ -242,7 +258,8 @@
     });
   <!/script>-->
   <!--<script src="https://cdn.optimizely.com/js/5905914163625984.js"></script>-->
-  <script src="https://cdn.optimizely.com/js/30299580011.js"></script>
+  <!--TEMP POC: snippet now loaded by the consent gate above-->
+  <!--<script src="https://cdn.optimizely.com/js/30299580011.js"></script>-->
   <!--<script src="https://cdn.optimizely.com/js/23318520138.js"></script>-->
   <!-- -->
 
